@@ -5,7 +5,7 @@ from sklearn.linear_model import LassoCV
 from scipy.optimize import minimize
 from scipy.special import expit
 
-def mlp(Z):
+def mlp(X, Y):
     """
     Multi-layer perceptron regressor
 
@@ -19,12 +19,11 @@ def mlp(Z):
     function
         A function that takes in X and returns the predicted values
     """
-    X, Y = Z[0], Z[1]
     model = MLPRegressor(hidden_layer_sizes=(64, 64), batch_size=64, alpha=0.01, max_iter=2000, learning_rate_init=0.001, random_state=42)
     model.fit(X, Y)
     return model.predict
 
-def isotonic(Z):
+def isotonic(X, Y):
     """
     Isotonic regression
 
@@ -38,12 +37,11 @@ def isotonic(Z):
     function
         A function that takes in X and returns the predicted values
     """
-    X, Y = Z[0], Z[1]
     f = IsotonicRegression(out_of_bounds='clip')
     f.fit(X, Y)
     return f.predict
 
-def lasso(Z):
+def lasso(X, Y):
     """
     Perform Lasso regression using cross-validation to select the best model.
 
@@ -58,7 +56,6 @@ def lasso(Z):
     function
         A function that takes in X and returns the predicted values
     """
-    X, Y = Z[0], Z[1]
     f = LassoCV(fit_intercept=False, alphas=np.logspace(-2, 0, 10), tol=1e-3, n_jobs=-1, random_state=0)
     f.fit(X, Y)
     return f.predict
@@ -89,3 +86,4 @@ def logistic_reg_from_score(X, s, l2_penalty=1.):
     d = X.shape[1]
     res = minimize(nll, np.zeros(d), jac=nll_grad, args=(X, s, l2_penalty), method='BFGS')
     return res.x
+
