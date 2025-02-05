@@ -91,7 +91,7 @@ def logistic_reg_from_score(X, s, l2_penalty=1.):
     res = minimize(nll, np.zeros(d), jac=nll_grad, args=(X, s, l2_penalty), method='BFGS')
     return res.x
 
-def fused_lasso(noisy_image, lbd, lr=1e-3, max_iter=100):
+def fused_lasso(noisy_image, lbd, lr=1e-3, max_iter=1000):
     """
     2d fused lasso implemented by Jax
 
