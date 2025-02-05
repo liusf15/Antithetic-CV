@@ -3,7 +3,7 @@ import argparse
 from prediction_algorithms import isotonic
 from risk_estimators import antithetic_cv, coupled_bootstrap, cv_split
 
-def run_experiment(alpha, K, rng):
+def run_experiment(g, X, sigma, alpha, K, rng):
     Y = generate_data(rng)
     risk_anti_cv = antithetic_cv(g, (X, Y), sigma, alpha, K, rng)
     risk_cb = coupled_bootstrap(g, (X, Y), sigma, alpha, K, rng)
@@ -31,5 +31,5 @@ if __name__ == '__main__':
     g = isotonic
 
     rng = np.random.default_rng(args.seed)
-    risk_estimates = run_experiment(args.alpha, args.K, rng)
+    risk_estimates = run_experiment(g, X, sigma, args.alpha, args.K, rng)
     print(risk_estimates)
