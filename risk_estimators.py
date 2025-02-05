@@ -27,7 +27,7 @@ def antithetic_cv(g, data, sigma, alpha, K, rng, loss_fn='quadratic'):
     """
     X, Y = data
     n = len(Y)
-    W = rng.normal(size=(K, n))
+    W = rng.normal(size=(K, ) + Y.shape)
     W = (W - W.mean(0)) * np.sqrt(K / (K - 1))
     if np.isscalar(sigma):
         sigma_type = 'scalar'
@@ -90,9 +90,9 @@ def coupled_bootstrap(g, data, sigma, alpha, B, rng, loss_fn='quadratic'):
     err = 0
     for _ in range(B):
         if sigma_type == 'scalar':
-            wb = sigma * rng.normal(size=(n, ))
+            wb = sigma * rng.normal(size=Y.shape)
         else:
-            wb = sigma @ rng.normal(size=(n, ))
+            wb = sigma @ rng.normal(size=Y.shape)
         Y_train = Y + np.sqrt(alpha) * wb
         Y_test = Y - wb / np.sqrt(alpha)
         if loss_fn == 'quadratic':
@@ -185,9 +185,9 @@ def BY(g, data, sigma, alpha, B, rng):
     g_boot = np.zeros((B, n))
     for b in range(B):
         if sigma_type == 'scalar':
-            wb = sigma * rng.normal(size=(n, ))
+            wb = sigma * rng.normal(size=Y.shape)
         else:
-            wb = sigma @ rng.normal(size=(n, ))
+            wb = sigma @ rng.normal(size=Y.shape)
         Y_b = Y + np.sqrt(alpha) * wb
         g_boot[b] = g(X, Y_b)(X)
         Y_boot[b] = Y_b
@@ -234,9 +234,9 @@ def breiman(g, data, sigma, alpha, B, rng):
     g_boot = np.zeros((B, n))
     for b in range(B):
         if sigma_type == 'scalar':
-            wb = sigma * rng.normal(size=(n, ))
+            wb = sigma * rng.normal(size=Y.shape)
         else:
-            wb = sigma @ rng.normal(size=(n, ))
+            wb = sigma @ rng.normal(size=Y.shape)
         Y_b = Y + np.sqrt(alpha) * wb
         g_boot[b] = g(X, Y_b)(X)
         Y_boot[b] = Y_b
@@ -283,9 +283,9 @@ def ye(g, data, sigma, alpha, B, rng):
     g_boot = np.zeros((B, n))
     for b in range(B):
         if sigma_type == 'scalar':
-            wb = sigma * rng.normal(size=(n, ))
+            wb = sigma * rng.normal(size=Y.shape)
         else:
-            wb = sigma @ rng.normal(size=(n, ))
+            wb = sigma @ rng.normal(size=Y.shape)
         Y_b = Y + np.sqrt(alpha) * wb
         g_boot[b] = g(X, Y_b)(X)
         Y_boot[b] = Y_b
