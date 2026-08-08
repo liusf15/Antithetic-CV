@@ -6,7 +6,7 @@ Code to reproduce the simulation results of *On the optimality of antithetic ran
 
 ```bash
 cd optimality
-python -m venv .venv
+python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
 ```
@@ -14,6 +14,6 @@ pip install -r requirements.txt
 ## Run the simulation and make plots
 
 ```
-python scripts/run_experiments.py
-python scripts/plot_results.py
+python3 scripts/run_experiments.py
+python3 scripts/plot_results.py
 ```
