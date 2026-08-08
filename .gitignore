@@ -5,7 +5,6 @@ __pycache__/
 optimality/.cache/
 optimality/.matplotlib-cache/
 optimality/.venv/
-optimality/results/*
-!optimality/results/.gitkeep
+optimality/results/
 optimality/figures/*
 !optimality/figures/.gitkeep
