@@ -19,4 +19,5 @@ where $`\omega^{(k)}\sim N(0,\sigma^2 I_n) `$ for $` 1\leq k\leq K`$ with the co
 
 [experiments](experiments/): contains the scripts to reproduce the numerical experiments presented in the paper.
 
-
+[`optimality`](optimality/): contains a self-contained simulation capsule for the
+ridge and hard-thresholded ridge optimality experiments.

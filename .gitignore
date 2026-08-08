@@ -1,0 +1,11 @@
+.DS_Store
+__pycache__/
+*.py[cod]
+
+optimality/.cache/
+optimality/.matplotlib-cache/
+optimality/.venv/
+optimality/results/*
+!optimality/results/.gitkeep
+optimality/figures/*
+!optimality/figures/.gitkeep
