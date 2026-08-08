@@ -24,7 +24,7 @@ METHOD_LABELS = {
     METHOD_POSITIVE_RHO: r"$\rho=1/(K-1)$",
     METHOD_RADEMACHER_ACV: "ACV (Rademacher)",
     METHOD_ROTATION_ACV: "ACV (Rotation)",
-    METHOD_TRUE_RISK: "True risk",
+    METHOD_TRUE_RISK: "True prediction error",
 }
 
 METHOD_SEED_IDS = {

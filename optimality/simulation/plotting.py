@@ -413,7 +413,7 @@ def plot_three_panel_figure(
         axes[2],
         hard_threshold_lambda_estimates,
         hard_threshold_lambda_methods,
-        r"(c) Hard-thresholded ridge" "\n" r"estimated risk versus $\lambda$",
+        r"(c) Hard-thresholded ridge" "\n" r"estimated prediction error versus $\lambda$",
         r"$\lambda$",
         true_risk=true_risk,
         errorbar=errorbar,
